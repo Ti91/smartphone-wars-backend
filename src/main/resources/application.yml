@@ -1,0 +1,46 @@
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  task:
+    scheduling:
+      pool:
+        size: 10
+server:
+  tomcat:
+    #Post-Size ist deprecated
+    max-http-form-post-size: 10MB
+    max-swallow-size: 10MB
+
+app:
+  firebase-configuration-file: matchyourdog.json
+
+---
+spring:
+  profiles: production
+  datasource:
+    url: "jdbc:${DATABASE_URL}"
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wars
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: true
