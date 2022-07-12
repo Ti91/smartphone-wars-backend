@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: vikings
+      POSTGRES_DB: smartphonewars
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
